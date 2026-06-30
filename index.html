@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Safna & Sameer Wedding Invitation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        /* Base styling and theme similar to minimal invite sites */
+        :root {
+            --bg: #f6f2ec;
+            --text: #333333;
+            --accent: #9c7a4b;
+            --box-bg: #ffffff;
+            --box-border: #e0d6c5;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Georgia", "Times New Roman", serif;
+            background: var(--bg);
+            color: var(--text);
+            scroll-behavior: smooth;
+        }
+
+        .page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Intro page with fade-in */
+        .intro-page {
+            background: var(--bg);
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .basmalah-arabic-large {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .basmalah-english-large {
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+        }
+
+        .scroll-indicator {
+            font-size: 12px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #777777;
+            margin-top: 40px;
+        }
+
+        .scroll-indicator::after {
+            content: " ↓";
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Main content page */
+        .main-page {
+            flex-direction: column;
+        }
+
+        .section {
+            margin: 40px 0;
+        }
+
+        .section-title {
+            font-size: 14px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .box {
+            background: var(--box-bg);
+            border: 1px solid var(--box-border);
+            padding: 25px 20px;
+            border-radius: 8px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.04);
+            margin: 0 auto;
+            max-width: 800px;
+        }
+
+        .box + .box {
+            margin-top: 20px;
+        }
+
+        .quran-arabic {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .quran-english {
+            font-size: 14px;
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        .quran-source {
+            margin-top: 10px;
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #777777;
+        }
+
+        .invite-text {
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .names-highlight {
+            font-size: 16px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 10px;
+            margin-bottom: 5px;
+        }
+
+        .label-small {
+            font-size: 12px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #777777;
+            margin-top: 10px;
+        }
+
+        .names-large {
+            font-size: 24px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .date-box {
+            font-size: 16px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        /* Countdown */
+        .countdown-text {
+            font-size: 14px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .countdown-value {
+            font-size: 20px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        /* Celebration details */
+        .day-heading {
+            font-size: 14px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .day-subheading {
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #777777;
+            margin-bottom: 15px;
+        }
+
+        .detail-block {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .detail-title {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .detail-time {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .detail-location {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .detail-actions {
+            font-size: 13px;
+            color: var(--accent);
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .detail-actions + .detail-actions {
+            margin-left: 15px;
+        }
+
+        /* RSVP / poll */
+        .rsvp-text {
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .rsvp-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .rsvp-option {
+            flex: 1 1 200px;
+            padding: 12px 15px;
+            border-radius: 6px;
+            border: 1px solid var(--box-border);
+            background: #fbf8f3;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .rsvp-option.selected {
+            border-color: var(--accent);
+            background: #f2e5d1;
+        }
+
+        .response-input {
+            width: 100%;
+            max-width: 100%;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid var(--box-border);
+            font-family: inherit;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        .submit-button {
+            margin-top: 12px;
+            padding: 10px 20px;
+            border-radius: 6px;
+            border: none;
+            background: var(--text);
+            color: var(--bg);
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .rsvp-message {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #2f7d32;
+        }
+
+        /* Small screens */
+        @media (max-width: 600px) {
+            .basmalah-arabic-large {
+                font-size: 22px;
+            }
+            .names-large {
+                font-size: 20px;
+            }
+            .date-box {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Intro page: only Bismillah with fade-in -->
+<section class="page intro-page">
+    <div class="container">
+        <div class="basmalah-arabic-large">
+            بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ
+        </div>
+        <div class="basmalah-english-large">
+            In the name of Allah, the Most Gracious, the Most Merciful
+        </div>
+        <div class="scroll-indicator">
+            Scroll to continue
+        </div>
+    </div>
+</section>
+
+<!-- Main content page -->
+<section class="page main-page" id="main">
+    <div class="container">
+
+        <!-- Quran verse box -->
+        <div class="section">
+            <div class="box">
+                <div class="quran-arabic">
+                    وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُمْ مِنْ أَنْفُسِكُمْ أَزْوَاجًا لِتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَوَدَّةً وَرَحْمَة
+                </div>
+                <div class="quran-english">
+                    "And of His signs is that He created for you from yourselves mates that you may find tranquility in them; and He placed between you affection and mercy. Indeed in that are signs for a people who give thought."
+                </div>
+                <div class="quran-source">
+                    Surah Ar-Rum · 30:21
+                </div>
+            </div>
+        </div>
+
+        <!-- Parents' invite box -->
+        <div class="section">
+            <div class="box">
+                <div class="invite-text">
+                    With the divine grace & blessings of Almighty Allah,<br><br>
+                    <strong>SAMEERA & Abdul Majeed</strong><br><br>
+                    cordially invite you to celebrate the wedding of their beloved daughter.
+                </div>
+            </div>
+        </div>
+
+        <!-- Bride and groom box -->
+        <div class="section">
+            <div class="box">
+                <div class="label-small">
+                    The Bride
+                </div>
+                <div class="names-large">
+                    SAFNA ABDUL MAJEED
+                </div>
+                <div class="label-small" style="margin-top: 20px;">
+                    The Groom
+                </div>
+                <div class="names-large">
+                    SAMEER
+                </div>
+            </div>
+        </div>
+
+        <!-- Dates box -->
+        <div class="section">
+            <div class="box">
+                <div class="date-box">
+                    OCTOBER 17 & 18, 2026
+                </div>
+            </div>
+        </div>
+
+        <!-- Countdown box -->
+        <div class="section">
+            <div class="box">
+                <div class="countdown-text">
+                    Countdown to the celebrations
+                </div>
+                <div id="countdown" class="countdown-value">
+                    Calculating...
+                </div>
+            </div>
+        </div>
+
+        <!-- Celebration details heading -->
+        <div class="section">
+            <div class="section-title">
+                Celebration Details
+            </div>
+            <div class="box">
+                <div class="day-heading">
+                    Two Days of Joy and Sacred Blessings
+                </div>
+            </div>
+        </div>
+
+        <!-- Day 1 box -->
+        <div class="section">
+            <div class="box">
+                <div class="day-heading">
+                    Day 1 · Saturday
+                </div>
+                <div class="day-subheading">
+                    October 17, 2026
+                </div>
+
+                <div class="detail-block">
+                    <div class="detail-title">The Nikah Ceremony</div>
+                    <div class="detail-time">
+                        4:00 PM · Nikah in the evening
+                    </div>
+                    <div class="detail-location">
+                        Bilal Juma Masjid
+                    </div>
+                    <div class="detail-actions" onclick="copyText('Bilal Juma Masjid, Pullanida')">
+                        Copy address
+                    </div>
+                </div>
+
+                <div class="detail-block">
+                    <div class="detail-title">Night Celebration</div>
+                    <div class="detail-time">
+                        7:00 PM onwards
+                    </div>
+                    <div class="detail-location">
+                        Our home (Near Pullanida, Bilal Juma Masjid)
+                    </div>
+                    <span class="detail-actions" onclick="copyText('Our home, Near Pullanida, Bilal Juma Masjid')">
+                        Copy address
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Day 2 box -->
+        <div class="section">
+            <div class="box">
+                <div class="day-heading">
+                    Day 2 · Sunday
+                </div>
+                <div class="day-subheading">
+                    October 18, 2026
+                </div>
+
+                <div class="detail-block">
+                    <div class="detail-title">The Wedding Feast</div>
+                    <div class="detail-time">
+                        12:00 PM onwards · Traditional lunch feast
+                    </div>
+                    <div class="detail-location">
+                        Our home (Near Pullanida, Bilal Juma Masjid)
+                    </div>
+                    <span class="detail-actions" onclick="copyText('Our home, Near Pullanida, Bilal Juma Masjid')">
+                        Copy address
+                    </span>
+                </div>
+
+                <div class="detail-block">
+                    <div class="detail-title">Celebration wrap-up</div>
+                    <div class="detail-time">
+                        Followed by celebration wrap-up
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RSVP / poll box -->
+        <div class="section">
+            <div class="box">
+                <div class="rsvp-text">
+                    Your presence and prayers are our greatest blessing.<br><br>
+                    Honor us with your reply.<br>
+                    Will you join our celebrations?<br>
+                    Please let us know so we can prepare to receive you warmheartedly.
+                </div>
+
+                <div class="rsvp-options">
+                    <div class="rsvp-option" id="optionYes">
+                        Yes, In Sha Allah<br>
+                        I will attend
+                    </div>
+                    <div class="rsvp-option" id="optionNo">
+                        No, sadly I cannot<br>
+                        I cannot make it
+                    </div>
+                </div>
+
+                <textarea id="responseInput" class="response-input" rows="3"
+                          placeholder="Send your blessings & response here"></textarea>
+
+                <button class="submit-button" id="submitRsvp">
+                    Send Blessings & Response
+                </button>
+
+                <div id="rsvpMessage" class="rsvp-message"></div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<script>
+    // Smooth scroll from intro to main when user scrolls or clicks
+    // (scroll-behavior: smooth is set in CSS for body)
+    // Countdown to October 17, 2026 (start of celebrations)
+    const startDate = new Date("October 17, 2026 16:00:00").getTime();
+
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = startDate - now;
+
+        if (distance < 0) {
+            document.getElementById("countdown").innerHTML = "The celebrations have begun!";
+            return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("countdown").innerHTML =
+            days + " days : " +
+            hours + " hours : " +
+            minutes + " minutes : " +
+            seconds + " seconds";
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // Copy address text helper
+    function copyText(text) {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(function () {
+                alert("Address copied: " + text);
+            }, function () {
+                alert("Unable to copy. Please copy manually: " + text);
+            });
+        } else {
+            alert("Please copy this address:\n" + text);
+        }
+    }
+
+    // RSVP poll logic
+    const optionYes = document.getElementById("optionYes");
+    const optionNo = document.getElementById("optionNo");
+    const responseInput = document.getElementById("responseInput");
+    const submitRsvp = document.getElementById("submitRsvp");
+    const rsvpMessage = document.getElementById("rsvpMessage");
+
+    function clearSelection() {
+        optionYes.classList.remove("selected");
+        optionNo.classList.remove("selected");
+    }
+
+    optionYes.addEventListener("click", function () {
+        clearSelection();
+        optionYes.classList.add("selected");
+    });
+
+    optionNo.addEventListener("click", function () {
+        clearSelection();
+        optionNo.classList.add("selected");
+    });
+
+    submitRsvp.addEventListener("click", function () {
+        let choice = "";
+        if (optionYes.classList.contains("selected")) {
+            choice = "Yes, In Sha Allah, I will attend.";
+        } else if (optionNo.classList.contains("selected")) {
+            choice = "No, sadly I cannot attend.";
+        } else {
+            choice = "No selection made.";
+        }
+
+        const text = responseInput.value.trim();
+
+        rsvpMessage.innerHTML =
+            "JazakAllahu khairan for your response.<br>" +
+            "Choice: " + choice + "<br>" +
+            (text ? "Message: " + text : "No additional message provided.");
+
+        responseInput.value = "";
+        clearSelection();
+    });
+</script>
+
+</body>
+</html>
